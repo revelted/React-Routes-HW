@@ -6,6 +6,7 @@
 - [React Routes](#react-routes)
 - [Windows Linux Subsystem Setup](#windows-linux-subsystem-setup)
 - [Final Project Guide](#final-project-guide)
+  - [PT12 Instructions](#pf12-final)
 
 ###  [Christmas Recipe](https://github.com/wyncode/front_end_pt_resources/tree/master/christmas_recipe)
 An exercise in building Javascript Objects by looking at the source.
@@ -24,3 +25,6 @@ Instructions to setup the Windows Linux subsystem.
 
 ### [Final Project Guide](./part_time_projects.md) 
 Instructions and resources for working on the Front-End Part-Time Final Project.
+
+  #### [PT12 Instructions](./pt12_final.md)
+  
