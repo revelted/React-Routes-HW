@@ -18,6 +18,7 @@ like this:
 
 Once the proxy is set, you can make requests directly to the desired endpoint. For example:
 
+### From Us to You
 - GET
   ```javascript
   // the 1 indicates the id of one specific record
@@ -63,9 +64,22 @@ Once the proxy is set, you can make requests directly to the desired endpoint. F
   ```
   
   
-  ## Endpoints
-   ### Menu
+  ### Endpoints
+   #### Menu
    ```bash
-   /menus      => GET, POST (list all Menus, create a menu)
-   /menus/:id  => GET, PATCH, PUT, DELETE (get one Menu by id, update menu by id, delete Menu by id)
-   
+      menus GET    /menus(.:format)           menus#index
+            POST   /menus(.:format)           menus#create
+       menu GET    /menus/:id(.:format)       menus#show
+            PATCH  /menus/:id(.:format)       menus#update
+            PUT    /menus/:id(.:format)       menus#update
+            DELETE /menus/:id(.:format)       menus#destroy
+   ```
+   #### Restaurant
+   ```bash
+   restaurants GET    /restaurants(.:format)     restaurants#index
+            POST   /restaurants(.:format)     restaurants#create
+ restaurant GET    /restaurants/:id(.:format) restaurants#show
+            PATCH  /restaurants/:id(.:format) restaurants#update
+            PUT    /restaurants/:id(.:format) restaurants#update
+            DELETE /restaurants/:id(.:format) restaurants#destroy
+    ```
