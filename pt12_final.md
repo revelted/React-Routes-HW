@@ -87,25 +87,25 @@ Once the proxy is set, you can make requests directly to the desired endpoint. F
   #### Endpoints
   In order to get any information from the website you need to authenticate first (ComponentDidMount).
   - **https://pt12-final-backend.herokuapp.com//pet_finder/auth**  
-    save this result in cache like this: `window.cache.pet_finder_token = <the resulting string>`  
-    then any time you need to use the token you just call `window.cache.pet_finder_token`  
+    save this result in cache like this: `window.caches.pet_finder_token = <the resulting string>`  
+    then any time you need to use the token you just call `window.caches.pet_finder_token`  
     **NOTE**: In order to not burden the API every time we reload or change the code you want to add some logic to the `ComponentDidMount` request. Like this:
     ```js
-    if (!window.cache.pet_finder_token) {  //means: if the token does not exist thenn get it and save
-      axios.get('https://pt12-final-backend.herokuapp.com/')
-        .then(response => window.cache.pet_finder_token(response.data)
+    if (!window.caches.pet_finder_token) {  //means: if the token does not exist thenn get it and save
+      axios.get('/pet_finder/auth')
+        .then(response => window.caches.pet_finder_token(response.data)
     }
     ```        
-  - To get a list of dogs (words in side of `<>` are placeholders and need a resl value when making the request
-    **https://pt12-final-backend.herokuapp.com/pets?token=<the token you get from the initial call goes here>&animal=<e.g.: dog>&location=<e.g.: Miami>**  
-    `token` and `animal` are required  
-    `location` is optional (don't include it at all if not using. and empty value (`location=`) will give an error  
+  - To get a list of dogs (words inside of `<>` are placeholders and need a real value when making the request
+    **https://pt12-final-backend.herokuapp.com/pet_finder/pets?token=<the token you get from the initial call goes here>&animal=<e.g.: dog>&location=<e.g.: Miami>**  
+    - `token` and `animal` are **required**  
+    - `location` is optional (don't include it at all if not using. and empty value (`location=`) will give an error  
     This gives back a list of the queried animal (make it so it's always **dog** for this application) 
   
   - To get an individual dog
-    **https://pt12-final-backend.herokuapp.com/<id>?token=<saved token**  
-    E.g.:
+    **https://pt12-final-backend.herokuapp.com/pet_finder/pet/<id>?token=<saved token>**  
+    
     ```js
-    axios.get(`https://pt12-final-backend.herokuapp.com/pet/${<id goes here probably from router params>}?token=${window.cache.pet_finder_token}}`)
+    axios.get(`/pet_finder/pet/${<id goes here probably from router params>}?token=${window.caches.pet_finder_token}}`)
       .then(response => setState({ pet: response.data }))
     ```
